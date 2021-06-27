@@ -1,12 +1,10 @@
 const DateTime = luxon.DateTime;
 const Interval = luxon.Interval;
 var now = DateTime.now();
-console.log(now);
 var dtArray = [];
 var agendaEvents = [];
 
 function initialize() {
-    //console.log(agendaEvents);
     loadEvents();
     createDtArray();
     showCurrDate();
@@ -18,7 +16,6 @@ function createDtArray() {
         newDt = DateTime.fromObject({ month: now.month, day: now.day, hour: i });
         dtArray.push(newDt);
     }
-    console.log(dtArray);
 }
 
 function dispTimeBlocks() {
@@ -34,7 +31,6 @@ function dispTimeBlocks() {
         timeRow.addClass('row');
         timeDisp.addClass('hour');
         eventDisp.addClass('description');
-        //eventDisp.attr('id', i);
         eventText.addClass('event-text');
         btn.addClass('saveBtn');
         btn.attr('id', i);
@@ -48,7 +44,6 @@ function dispTimeBlocks() {
             eventDisp.addClass('past');
         }
         timeDisp.text(dtArray[i].toFormat('ha') + " ");
-        //eventDisp.text("              ");
         btn.prepend("<img src=./assets/images/data-transfer-upload.svg />");
         
         if (agendaEvents[i] != undefined){
@@ -57,8 +52,6 @@ function dispTimeBlocks() {
         else{
             agendaEvents[i] = "";
         }
-        console.log(agendaEvents[i]);
-        //eventText.text("  ");
         eventDisp.append(eventText);
         timeRow.append(timeDisp);
         timeRow.append(eventDisp);
@@ -74,13 +67,10 @@ function showCurrDate() {
 }
 
 $('.container').on("click", ".description", function () {
-    console.log("clicked");
-    console.log($(this));
 
     var text = $(this).parent().children().children(".event-text")
         .text()
         .trim();
-    console.log(text);
 
     var textInput = $("<input>")
         .attr('type', 'text')
@@ -101,16 +91,13 @@ function loadEvents() {
 }
 
 function saveEvents() {
-    console.log(agendaEvents);
     localStorage.setItem("agendaEvents", JSON.stringify(agendaEvents));
 }
 
 $('.container').on("blur", ".description", function () {
-    console.log("clocked out");
     var text = $(this).parent().children().children(".text-input")
         .val()
         .trim();
-    console.log(text);
 
     var newText = $('<div>');
     newText.addClass('event-text');
@@ -120,10 +107,7 @@ $('.container').on("blur", ".description", function () {
 });
 
 $('.container').on("click", "button", function () {
-    console.log($(this));
     var eventId = parseInt($(this).attr('id'));
-    console.log(eventId);
-    //console.log($(this).parent().children(".description").children().text().trim()); 
     agendaEvents[eventId] =
         $(this).parent().children(".description").children().text().trim();
     saveEvents();
