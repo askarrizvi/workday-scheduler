@@ -13,6 +13,7 @@ textarea {
   padding: 10px;
 }
 
+/*Jumbotron which includes the current date*/
 .jumbotron {
   text-align: center;
   background-color: transparent;
@@ -21,10 +22,12 @@ textarea {
   border-bottom: 10px solid black;
 }
 
+/*Container for the time blocks*/
 .container {
   padding: 20px;
 }
 
+/*Events for each timeblock*/
 .description {
   white-space: pre-wrap;
   text-align: left;
@@ -33,18 +36,22 @@ textarea {
   position: relative;
 }
 
+/*Time block which contains the row(time, event and button)*/
 .time-block {
   text-align: center;
   border-radius: 15px;
 }
 
+/*Row which contains the time, event and button
+This is a flexbox to allow for better resizing based on screen size*/
 .row {
-  display:flex;
+  display: flex;
   white-space: pre-wrap;
   height: 80px;
   border-top: 1px solid white;
 }
 
+/*The time that corresponds to the time block*/
 .hour {
   background-color: #ffffff;
   color: #000000;
@@ -53,21 +60,25 @@ textarea {
   text-align: right;
 }
 
+/*If the time block is before the current time, make it gray*/
 .past {
   background-color: #d3d3d3;
   color: black;
 }
 
+/*If the time block is the same hour as the current time, make it red*/
 .present {
   background-color: #ff6961;
   color: black;
 }
 
+/*If the time block is after the current time, make it green*/
 .future {
   background-color: #77dd77;
   color: black;
 }
 
+/*Style the save button*/
 .saveBtn {
   border-left: 1px solid black;
   border-top-right-radius: 15px;
@@ -77,12 +88,14 @@ textarea {
   width: 4%;
 }
 
+/*Save button hover animation*/
 .saveBtn:hover {
   font-size: 20px;
   transition: all .5s ease-in-out;
 }
 
-.text-input{
+/*Text input field for when the user wants to modify an event*/
+.text-input {
   border: none;
   border-color: transparent;
   background-color: transparent;
